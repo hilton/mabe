@@ -1,0 +1,26 @@
+body {
+ width: 40em;
+ margin: 2em auto;
+}
+
+.content {
+ font-family: Georgia, serif;
+}
+
+header, footer {
+ font-family: "Helvetica Neue", sans-serif;
+ border-top: 2px solid black;
+ border-bottom: 1px solid black;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 300%;
+  margin: 0.4em 0;
+}
+
+footer {
+ margin-top: 2em;
+ font-size: 80%;
+}

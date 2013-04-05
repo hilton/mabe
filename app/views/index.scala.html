@@ -1,0 +1,9 @@
+@(posts: Seq[models.Post])
+
+@main("Markdown Blog Engine") {
+  <ul>
+    @for(post <- posts) {
+      <li><a href="@routes.Application.post(post.slug)">@post.slug</a></li>
+    }
+  </ul>
+}
