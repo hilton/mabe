@@ -1,16 +1,16 @@
 ---
-date: 2013-03-28
-title: Typesafe training partnership
-tags: playframework
-author: Peter Hilton
-signature: >
-  Peter Hilton is a senior software developer at Lunatech Research, committer on
-  the Play open-source project and co-author of the book [Play for
-  Scala](http://bit.ly/playforscala).
-summary: >
-  Lunatech is proud to announce our training partnership with Typesafe, and our
-  first Typesafe training course: _Fast Track to Play with Scala_ in Rotterdam
-  on 30-31 May 2013.
+date = "2013-03-28"
+title = Typesafe training partnership
+tags = playframework
+author = Peter Hilton
+signature = """
+Peter Hilton is a senior software developer at Lunatech Research, committer on
+the Play open-source project and co-author of the book [Play for
+Scala](http://bit.ly/playforscala)."""
+summary = """
+Lunatech is proud to announce our training partnership with Typesafe, and our
+first Typesafe training course: _Fast Track to Play with Scala_ in Rotterdam
+on 30-31 May 2013."""
 ---
 
 ![Typesafe](http://lunatech.com/about/images/typesafe.png)

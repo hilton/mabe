@@ -1,10 +1,10 @@
 ---
-date: 2013-04-03
-title: Typesafe at 010DEV
-tags: event
-author: Peter Hilton
-signature: Peter Hilton is a senior software developer at Lunatech Research, committer on the Play open-source project and co-author of the book [Play for Scala](http://bit.ly/playforscala).
-summary: "At yesterday’s 010DEV developer meet-up, Typesafe and Lunatech presented Play and Akka to a room full of developers."
+date = "2013-04-03"
+title = Typesafe at 010DEV
+tags = event
+author = Peter Hilton
+signature = "Peter Hilton is a senior software developer at Lunatech Research, committer on the Play open-source project and co-author of the book [Play for Scala](http://bit.ly/playforscala)."
+summary = "At yesterday’s 010DEV developer meet-up, Typesafe and Lunatech presented Play and Akka to a room full of developers."
 ---
 
 ![James Ward and Nicolas Leroux](http://blog.lunatech.com/2013/04/03/typesafe-at-010dev.jpg)

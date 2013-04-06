@@ -3,24 +3,87 @@ body {
  margin: 2em auto;
 }
 
-.content {
- font-family: Georgia, serif;
-}
-
 header, footer {
  font-family: "Helvetica Neue", sans-serif;
  border-top: 2px solid black;
  border-bottom: 1px solid black;
 }
 
-h1 {
-  text-transform: uppercase;
-  font-weight: normal;
-  font-size: 300%;
-  margin: 0.4em 0;
+header {
+    padding: 0.5em 0;
+}
+
+header h1 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 300%;
+    line-height: 100%;
+    margin: 0;
+}
+
+.content {
+    font-family: Georgia, serif;
 }
 
 footer {
- margin-top: 2em;
- font-size: 80%;
+    margin-top: 3em;
+    font-size: 80%;
 }
+
+/* Index page */
+
+body.index .content h2 {
+ font-family: "Helvetica Neue", sans-serif;
+ margin: 1.5em 0 0 0;
+}
+body.index .content h2 a {
+ text-transform: uppercase;
+ color: inherit;
+}
+body.index .date {
+ margin-left: 1em;
+ font-size: 60%;
+ font-weight: normal;
+}
+body.index .content p {
+ margin-top: 0;
+}
+
+/* Post */
+
+nav {
+ font-family: "Helvetica Neue", sans-serif;
+ font-size: 80%;
+ margin-bottom: 0.5em;
+}
+
+nav a {
+ text-transform: uppercase;
+ text-decoration: none;
+ color: inherit;
+}
+
+.summary {
+ font-size: 130%;
+ margin-bottom: 1.5em;
+}
+
+.byline {
+ font-style: italic;
+ border-bottom: 1px solid black;
+}
+
+.byline p {
+ margin: 0.5em 0;
+}
+
+.tag {
+ margin-left: 0.5em;
+ text-decoration: none;
+}
+
+.signature {
+ border-top: 1px solid black;
+ font-size: 90%;
+}
+

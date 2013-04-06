@@ -7,6 +7,9 @@ import play.api.templates.Html
 import play.api.libs.Files
 import org.pegdown.PegDownProcessor
 import models.Post
+import com.typesafe.config.{Config, ConfigFactory}
+import java.io.File
+import views.Helpers
 
 object Application extends Controller {
 
@@ -26,8 +29,9 @@ object Application extends Controller {
     val path = "%s/%s.md" format (postsDirectory, slug)
     val file = Play.getFile(path)
     if (file.exists()) {
-      val html = new PegDownProcessor().markdownToHtml(Files.readFile(file))
-      Ok(views.html.page(Html(html)))
+      val content = Files.readFile(file)
+      val body = content.split("---\n").last
+      Ok(views.html.page(properties(file), Helpers.markdown(body)))
     }
     else {
       NotFound("No source for post %s" format slug)
@@ -38,8 +42,30 @@ object Application extends Controller {
    * A list of this site’s posts in reverse chronological order.
    */
   private def posts: Seq[Post] = {
-    val posts = Play.getFile(postsDirectory).listFiles().map(_.getName)
-    val slugs = posts.map(_.split('.').dropRight(1)).flatten
-    slugs.map(Post(_, Set.empty))
+    val postFiles = Play.getFile(postsDirectory).listFiles()
+    val posts = postFiles.toList.map { file =>
+      if (file.getName.endsWith(".md") || file.getName.endsWith(".markdown")) {
+        val slug = file.getName.split('.').dropRight(1)(0)
+        Post(slug, properties(file))
+      }
+      else {
+        null
+      }
+    }
+    posts
+  }
+
+  /**
+   * Read post ‘properties’ from a post’s ‘front-matter’ in Typesafe Config format.
+   */
+  private def properties(post: File): Config = {
+    val content = Files.readFile(post)
+    val sections = content.split("---\n")
+    if (sections.length > 2) {
+      ConfigFactory.parseString(sections(1))
+    }
+    else {
+      ConfigFactory.empty
+    }
   }
 }

@@ -1,9 +1,32 @@
 @(posts: Seq[models.Post])
+<!DOCTYPE html>
+<html>
+<head>
+<title>Markdown Blog Engine</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+</head>
+<body class="index">
 
-@main("Markdown Blog Engine") {
-  <ul>
-    @for(post <- posts) {
-      <li><a href="@routes.Application.post(post.slug)">@post.slug</a></li>
-    }
-  </ul>
+<header>
+<h1>Markdown Blog Engine</h1>
+</header>
+
+<section class="content">
+@for(post <- posts) {
+  <h2>
+    <a href="@routes.Application.post(post.slug)">@post.properties.getString("title")</a>
+    <span class="date">@post.properties.getString("date")</span>
+  </h2>
+  @if(post.properties.hasPath("summary")) {
+    @views.Helpers.markdown(post.properties.getString("summary"))
+  }
 }
+</section>
+
+<footer>
+<p>MABE • Markdown Blog Engine • http://github.com/hilton/mabe</p>
+</footer>
+
+</body>
+</html>
