@@ -4,7 +4,6 @@
 <head>
 <title>Markdown Blog Engine</title>
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
 </head>
 <body class="index">
 
@@ -15,8 +14,8 @@
 <section class="content">
 @for(post <- posts) {
   <h2>
-    <a href="@routes.Application.post(post.slug)">@post.properties.getString("title")</a>
-    <span class="date">@post.properties.getString("date")</span>
+    <a href="@routes.Application.post(post.slug)">@post.property("title")</a>
+    <span class="date">@post.property("date")</span>
   </h2>
   @if(post.properties.hasPath("summary")) {
     @views.Helpers.markdown(post.properties.getString("summary"))

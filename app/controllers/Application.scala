@@ -3,9 +3,7 @@ package controllers
 import play.api._
 import play.api.Play.current
 import play.api.mvc._
-import play.api.templates.Html
 import play.api.libs.Files
-import org.pegdown.PegDownProcessor
 import models.Post
 import com.typesafe.config.{Config, ConfigFactory}
 import java.io.File
@@ -31,7 +29,7 @@ object Application extends Controller {
     if (file.exists()) {
       val content = Files.readFile(file)
       val body = content.split("---\n").last
-      Ok(views.html.page(properties(file), Helpers.markdown(body)))
+      Ok(views.html.page(Post(slug, properties(file)), Helpers.markdown(body)))
     }
     else {
       NotFound("No source for post %s" format slug)
@@ -39,7 +37,7 @@ object Application extends Controller {
   }
 
   /**
-   * A list of this site’s posts in reverse chronological order.
+   * A list of this site’s posts. TODO sort in reverse chronological order.
    */
   private def posts: Seq[Post] = {
     val postFiles = Play.getFile(postsDirectory).listFiles()

@@ -1,3 +1,43 @@
-@(properties: com.typesafe.config.Config, html: Html)
+@(post: models.Post, content: Html)
+<!DOCTYPE html>
+<html>
+<head>
+<title>@post.property("title")</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+</head>
+<body>
 
-@main(properties.getString("title"), properties)(html)
+<nav>
+  <a href="@routes.Application.index">Home</a>
+</nav>
+
+<header>
+  <h1>@post.property("title")</h1>
+</header>
+
+<section class="byline">
+  <p>
+    @List(post.property("author"), post.property("date")).flatten.mkString(" • ")
+    @post.properties.getString("tags").split(" ").map { tag =>
+      <a class="tag" href="">#@tag</a>
+    }
+  </p>
+</section>
+
+<section class="summary">
+  @if(post.properties.hasPath("summary")) {
+    @views.Helpers.markdown(post.properties.getString("summary"))
+  }
+</section>
+
+<section class="content">@content</section>
+
+@if(post.properties.hasPath("summary")) {
+  <section class="signature">@views.Helpers.markdown(post.properties.getString("signature"))</section>
+}
+
+<footer>
+  <p>MABE • Markdown Blog Engine • http://github.com/hilton/mabe</p>
+  </footer>
+  </body>
+</html>
