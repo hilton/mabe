@@ -3,16 +3,21 @@ package models
 import com.typesafe.config.Config
 import java.util.Date
 import org.joda.time.format.DateTimeFormat
+import org.joda.time.LocalDate
 
 /**
  * Typesafe Config format ‘front-matter properties’ for a post, identified by slug.
  */
 case class Post(slug: String, properties: Config) {
 
+  /**
+   * Return the post’s date as a `java.util.Date`; `date` is not a required post property,
+   * so default to today’s date.
+   */
   def date: Date = {
     property("date").map { date =>
       DateTimeFormat.forPattern("YYYY-MM-dd").parseLocalDate(date).toDate
-    }.getOrElse(new Date())
+    }.getOrElse(new LocalDate().toDate)
   }
 
   /**
