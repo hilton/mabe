@@ -37,7 +37,7 @@ object Application extends Controller {
   }
 
   /**
-   * A list of this site’s posts. TODO sort in reverse chronological order.
+   * A list of this site’s posts in reverse chronological order.
    */
   private def posts: Seq[Post] = {
     val postFiles = Play.getFile(postsDirectory).listFiles()
@@ -50,7 +50,7 @@ object Application extends Controller {
         null
       }
     }
-    posts
+    posts.sortBy(_.date).reverse
   }
 
   /**
@@ -59,7 +59,7 @@ object Application extends Controller {
   private def properties(post: File): Config = {
     val content = Files.readFile(post)
     val sections = content.split("---\n")
-    if (sections.length > 2) {
+    if (sections.length > 1) {
       ConfigFactory.parseString(sections(1))
     }
     else {
