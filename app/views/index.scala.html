@@ -1,14 +1,20 @@
-@(posts: Seq[models.Post])
+@(title: String, posts: Seq[models.Post])(implicit request: play.api.mvc.RequestHeader)
 <!DOCTYPE html>
 <html>
 <head>
-<title>Markdown Blog Engine</title>
+<title>@title - MABE</title>
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 </head>
 <body class="index">
 
+@if(request.path != "/") {
+  <nav>
+    <a href="@routes.Application.index">Home</a>
+  </nav>
+}
+
 <header>
-<h1>Markdown Blog Engine</h1>
+<h1>@title</h1>
 </header>
 
 <section class="content">

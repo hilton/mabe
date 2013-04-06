@@ -16,8 +16,16 @@ object Application extends Controller {
   /**
    * Output an index page - a list of posts.
    */
-  def index = Action {
-    Ok(views.html.index(posts))
+  def index = Action { implicit request =>
+    Ok(views.html.index("Markdown Blog Engine", posts))
+  }
+
+  /**
+   * Output a list of posts with a given tag.
+   */
+  def tagged(tag: String) = Action { implicit request =>
+    val taggedPosts = posts.filter(_.property("tags").getOrElse("").split(" ").contains(tag))
+    Ok(views.html.index("#%s" format tag, taggedPosts))
   }
 
   /**

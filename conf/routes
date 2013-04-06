@@ -1,4 +1,5 @@
-GET /        controllers.Application.index
-GET /:slug   controllers.Application.post(slug: String)
+GET /           controllers.Application.index
+GET /tag/:tag   controllers.Application.tagged(tag: String)
+GET /:slug      controllers.Application.post(slug: String)
 
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET /assets/*file   controllers.Assets.at(path="/public", file)

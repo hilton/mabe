@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>@post.property("title")</title>
+<title>@post.property("title") - MABE</title>
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 </head>
 <body>
@@ -19,7 +19,7 @@
   <p>
     @List(post.property("author"), post.property("date")).flatten.mkString(" • ")
     @post.properties.getString("tags").split(" ").map { tag =>
-      <a class="tag" href="">#@tag</a>
+      <a class="tag" href="@routes.Application.tagged(tag)">#@tag</a>
     }
   </p>
 </section>

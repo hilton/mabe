@@ -3,6 +3,18 @@ body {
  margin: 2em auto;
 }
 
+nav {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 80%;
+    margin-bottom: 0.5em;
+}
+
+nav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+}
+
 header, footer {
  font-family: "Helvetica Neue", sans-serif;
  border-top: 2px solid black;
@@ -50,18 +62,6 @@ body.index .content p {
 }
 
 /* Post */
-
-nav {
- font-family: "Helvetica Neue", sans-serif;
- font-size: 80%;
- margin-bottom: 0.5em;
-}
-
-nav a {
- text-transform: uppercase;
- text-decoration: none;
- color: inherit;
-}
 
 .summary {
  font-size: 130%;
